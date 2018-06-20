@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">QuickLauncher</string>
+    <string name="action_add">新增</string>
+    <string name="gestures_add">添加</string>
+    <string name="gestures_cancel">取消</string>
+    <string name="no_data">暂无数据</string>
+    <string name="action_next">下一步</string>
+    <string name="action_done">完成</string>
+    <string name="create_gesture">创建手势</string>
+    <string name="choose_app">选择应用</string>
+    <string name="create_gesture_here">请在此处绘制手势</string>
+    <string name="action_delete">删除</string>
+</resources>

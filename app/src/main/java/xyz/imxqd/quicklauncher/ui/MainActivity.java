@@ -1,0 +1,105 @@
+package xyz.imxqd.quicklauncher.ui;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import io.reactivex.functions.Consumer;
+import xyz.imxqd.quicklauncher.R;
+import xyz.imxqd.quicklauncher.dao.GestureAction;
+import xyz.imxqd.quicklauncher.model.GestureManager;
+import xyz.imxqd.quicklauncher.ui.adapters.GestureActionAdapter;
+import xyz.imxqd.quicklauncher.utils.DialogUtil;
+
+public class MainActivity extends BaseActivity {
+
+    private static final int REQUSET_ADD = 2;
+
+    @BindView(android.R.id.list)
+    ListView mGestureList;
+    @BindView(android.R.id.progress)
+    ProgressBar mProgressBar;
+    @BindView(android.R.id.empty)
+    View mEmptyView;
+
+    GestureActionAdapter mAdapter;
+
+    @Override
+    protected int getLayoutResId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initMembers() {
+        mAdapter = new GestureActionAdapter(this);
+    }
+
+    @Override
+    protected void initViews() {
+        mGestureList.setEmptyView(mEmptyView);
+        mGestureList.setAdapter(mAdapter);
+    }
+
+    @Override
+    protected void initEvents() {
+        mGestureList.setVisibility(View.GONE);
+        mProgressBar.setVisibility(View.VISIBLE);
+        mGestureList.setOnItemClickListener((parent, view, position, id) -> {
+            List<String> list = new ArrayList<>();
+            list.add(getString(R.string.action_delete));
+            DialogUtil.showList(MainActivity.this, list, (pos, item) -> {
+                switch (pos) {
+                    case 0:
+                        GestureAction action = (GestureAction) mAdapter.getItem(position);
+                        GestureManager.get().delete(action.gestureId);
+                        load();
+                        break;
+                }
+            });
+        });
+        load();
+    }
+
+    private void load() {
+        GestureManager.get().load(gestureActions -> {
+            mGestureList.setVisibility(View.VISIBLE);
+            mProgressBar.setVisibility(View.GONE);
+            mAdapter.setData(gestureActions);
+            mAdapter.notifyDataSetChanged();
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_add:
+                startActivityForResult(new Intent(this, CreateGestureActivity.class), REQUSET_ADD);
+                break;
+        }
+        return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUSET_ADD && resultCode == RESULT_OK) {
+            load();
+        }
+    }
+}
