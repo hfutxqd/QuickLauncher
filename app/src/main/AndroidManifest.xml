@@ -3,8 +3,8 @@
     package="xyz.imxqd.quicklauncher">
 
     <application
-        android:allowBackup="true"
         android:name=".App"
+        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -17,10 +17,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.CreateGestureActivity"
-            android:label="@string/create_gesture"/>
-        <activity android:name=".ui.AppChooseActivity"
-            android:label="@string/choose_app"/>
+        <activity
+            android:name=".ui.CreateGestureActivity"
+            android:label="@string/create_gesture" />
+        <activity
+            android:name=".ui.AppChooseActivity"
+            android:label="@string/choose_app" />
+        <activity
+            android:name=".ui.GestureDetectActivity"
+            android:theme="@style/AppTheme.NoTitleDialog">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

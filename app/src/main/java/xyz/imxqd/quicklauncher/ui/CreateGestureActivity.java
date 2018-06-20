@@ -52,11 +52,18 @@ public class CreateGestureActivity extends BaseActivity {
     }
 
     @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_next) {
             Intent intent = new Intent(this, AppChooseActivity.class);
             intent.putExtra(AppChooseActivity.ARG_GESTURE, mGesture);
             startActivityForResult(intent, REQUEST_APP_LIST);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             return true;
         }
         return false;

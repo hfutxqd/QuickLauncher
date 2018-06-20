@@ -13,7 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -92,6 +91,12 @@ public class AppChooseActivity extends BaseActivity {
     }
 
     @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.app_list, menu);
         mDoneMenu = menu.getItem(0).setEnabled(false);
@@ -102,9 +107,10 @@ public class AppChooseActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_done) {
-            GestureManager.get().save(mGesture, mAdapter.getSelectedItem(), GestureAction.ACTION_TYPE_ACTIVIY_INTENT);
+            GestureManager.get().save(mGesture, mAdapter.getSelectedItem(), GestureAction.ACTION_TYPE_ACTIVITY_INTENT);
             setResult(RESULT_OK);
             finish();
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             return true;
         }
         return false;
