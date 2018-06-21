@@ -98,6 +98,9 @@ public class MainActivity extends BaseActivity {
                 startActivityForResult(new Intent(this, CreateGestureActivity.class), REQUSET_ADD);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
+            case R.id.action_settings:
+                startActivity(new Intent(this, SettingsActivity.class));
+                break;
         }
         return true;
     }

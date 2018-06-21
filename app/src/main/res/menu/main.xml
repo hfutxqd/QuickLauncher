@@ -6,4 +6,12 @@
         android:icon="@drawable/ic_add_black_24dp"
         android:title="@string/action_add"
         app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_about"
+        android:title="@string/action_about"
+        app:showAsAction="never" />
 </menu>

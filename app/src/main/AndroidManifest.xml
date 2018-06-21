@@ -35,6 +35,9 @@
         <activity
             android:name=".ui.ClickFuncActivity"
             android:label="@string/choose_func" />
+        <activity
+            android:name=".ui.SettingsActivity"
+            android:label="@string/title_activity_settings"></activity>
     </application>
 
 </manifest>
