@@ -27,6 +27,10 @@ public class GestureAction extends BaseModel {
     public String name;
 
     @NotNull
+    @Column(name = "description")
+    public String description;
+
+    @NotNull
     @Unique
     @Column(name = "gesture_id")
     public long gestureId;

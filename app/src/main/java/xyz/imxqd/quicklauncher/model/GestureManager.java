@@ -1,6 +1,7 @@
 package xyz.imxqd.quicklauncher.model;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.gesture.Gesture;
 import android.gesture.GestureLibraries;
@@ -118,12 +119,26 @@ public class GestureManager {
             action.actionType = actionType;
             action.gestureId = gesture.getID();
             action.name = info.name;
+            action.description = App.getApp().getString(R.string.lanucher_app_prefix) + info.name;
             action.actionData = info.getLauncherIntent(App.getApp()).toUri(0);
             action.save();
             action.load();
             mStore.addGesture(String.valueOf(action.id), gesture);
             mStore.save();
         }
+    }
+
+    public void saveActivityIntentAction(Gesture gesture, String name, String subTitle, Intent intent) {
+        GestureAction action = new GestureAction();
+        action.actionType = GestureAction.ACTION_TYPE_ACTIVITY_INTENT;
+        action.gestureId = gesture.getID();
+        action.name = name;
+        action.description = subTitle;
+        action.actionData = intent.toUri(0);
+        action.save();
+        action.load();
+        mStore.addGesture(String.valueOf(action.id), gesture);
+        mStore.save();
     }
 
     public void delete(long gestureId) {

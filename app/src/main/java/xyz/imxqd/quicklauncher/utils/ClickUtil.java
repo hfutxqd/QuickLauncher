@@ -1,5 +1,6 @@
 package xyz.imxqd.quicklauncher.utils;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
@@ -22,6 +23,7 @@ public class ClickUtil {
             return new Intent();
         }
         Intent shortcutIntent = new Intent(sInstalledClickClick + ACTION_RUN);
+        shortcutIntent.setComponent(new ComponentName(sInstalledClickClick, ".ui.NoDisplayActivity"));
         shortcutIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         shortcutIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         shortcutIntent.putExtra(ARG_FUNC_ID, funcId);

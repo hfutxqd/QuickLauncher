@@ -8,8 +8,10 @@
     <string name="action_done">完成</string>
     <string name="create_gesture">创建手势</string>
     <string name="choose_app">选择应用</string>
-    <string name="create_gesture_here">请在此处绘制手势</string>
+    <string name="create_gesture_here">请在此处绘制手势\n请务必一笔绘制完成</string>
     <string name="action_delete">删除</string>
     <string name="choose_func">选择功能</string>
     <string name="action_func">快按键功能</string>
+    <string name="lanucher_app_prefix">打开</string>
+    <string name="create_gesture_here2">请点击下一步</string>
 </resources>

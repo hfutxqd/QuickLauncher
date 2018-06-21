@@ -13,7 +13,10 @@
         android:gestureStrokeType="multiple" />
 
     <TextView
+        android:id="@+id/gestures_hint"
         android:text="@string/create_gesture_here"
+        android:textSize="16sp"
+        android:gravity="center"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

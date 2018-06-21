@@ -1,0 +1,4 @@
+<resources>
+    <item name="func_name" type="id" />
+    <item name="func_description" type="id" />
+</resources>

@@ -28,6 +28,8 @@ public class CreateGestureActivity extends BaseActivity {
 
     @BindView(R.id.gestures_overlay)
     GestureOverlayView mOverlayView;
+    @BindView(R.id.gestures_hint)
+    TextView mHint;
 
     Gesture mGesture;
 
@@ -47,6 +49,7 @@ public class CreateGestureActivity extends BaseActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.gesture, menu);
         mNextMenu = menu.getItem(0).setEnabled(false);
+        mHint.setText(R.string.create_gesture_here);
         mNextMenu.getIcon().setAlpha(80);
         return true;
     }
@@ -104,6 +107,7 @@ public class CreateGestureActivity extends BaseActivity {
         public void onGestureStarted(GestureOverlayView overlay, MotionEvent event) {
             mGesture = null;
             mNextMenu.setEnabled(false);
+            mHint.setText(R.string.create_gesture_here);
             mNextMenu.getIcon().setAlpha(80);
         }
 
@@ -118,9 +122,11 @@ public class CreateGestureActivity extends BaseActivity {
                 overlay.clear(false);
                 mGesture = null;
                 mNextMenu.setEnabled(false);
+                mHint.setText(R.string.create_gesture_here);
                 mNextMenu.getIcon().setAlpha(80);
             } else {
                 mNextMenu.setEnabled(true);
+                mHint.setText(R.string.create_gesture_here2);
                 mNextMenu.getIcon().setAlpha(255);
             }
         }

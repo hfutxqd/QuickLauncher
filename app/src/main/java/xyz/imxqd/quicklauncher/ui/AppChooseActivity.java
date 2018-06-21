@@ -132,6 +132,7 @@ public class AppChooseActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CLICK_FUNC && resultCode == RESULT_OK) {
+            setResult(RESULT_OK);
             finish();
         }
     }

@@ -1,16 +1,21 @@
 package xyz.imxqd.quicklauncher.ui;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.gesture.Gesture;
 import android.net.Uri;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import butterknife.BindView;
 import xyz.imxqd.quicklauncher.R;
+import xyz.imxqd.quicklauncher.model.GestureManager;
 import xyz.imxqd.quicklauncher.ui.adapters.FuncAdapter;
+import xyz.imxqd.quicklauncher.utils.ClickUtil;
 
 public class ClickFuncActivity extends BaseActivity {
     public static final String ARG_GESTURE = "arg_gesture";
@@ -48,6 +53,24 @@ public class ClickFuncActivity extends BaseActivity {
         mAppList.setAdapter(mAdapter);
     }
 
+    private String name, description;
+    private Intent intent;
+
+    @Override
+    protected void initEvents() {
+        mAppList.setOnItemClickListener((parent, view, position, id) -> {
+            name = (String) view.getTag(R.id.func_name);
+            description = (String) view.getTag(R.id.func_description);
+            intent = ClickUtil.getFuncIntent(id);
+
+            mDoneMenu.setEnabled(true);
+            mDoneMenu.getIcon().setAlpha(255);
+            mAdapter.setSelectedId(id);
+            mAdapter.notifyDataSetChanged();
+
+        });
+    }
+
     @Override
     public void finish() {
         super.finish();
@@ -65,7 +88,9 @@ public class ClickFuncActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_done) {
-            // TODO: 2018/6/21
+
+            GestureManager.get().saveActivityIntentAction(mGesture, name, description, intent);
+
             setResult(RESULT_OK);
             finish();
             return true;

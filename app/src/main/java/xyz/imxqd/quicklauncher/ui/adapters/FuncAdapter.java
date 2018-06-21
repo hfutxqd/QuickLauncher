@@ -17,16 +17,17 @@ public class FuncAdapter extends CursorAdapter {
 
     Drawable icon;
 
+    private long mSelectedId = -1;
+
     public FuncAdapter(Context context, Cursor c) {
         super(context, c, false);
         icon = ClickUtil.getIcon();
     }
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
 
+    public void setSelectedId(long id) {
+        mSelectedId = id;
+    }
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
         View v = LayoutInflater.from(context).inflate(R.layout.list_item_app, parent, false);
@@ -37,9 +38,21 @@ public class FuncAdapter extends CursorAdapter {
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
         FuncViewHolder holder = (FuncViewHolder) view.getTag();
+        long id = cursor.getLong(cursor.getColumnIndex("_id"));
+        String name = cursor.getString(cursor.getColumnIndex("name"));
+        String description = cursor.getString(cursor.getColumnIndex("description"));
+        view.setTag(R.id.func_name, name);
+        view.setTag(R.id.func_description, description);
         holder.icon.setImageDrawable(icon);
-        holder.name.setText(cursor.getString(cursor.getColumnIndex("name")));
-        holder.subTitle.setText(cursor.getString(cursor.getColumnIndex("description")));
+        holder.name.setText(name);
+        holder.subTitle.setText(description);
+        if (id == mSelectedId) {
+            view.setSelected(true);
+            view.setActivated(true);
+        } else {
+            view.setSelected(false);
+            view.setActivated(false);
+        }
     }
 
     public class FuncViewHolder {

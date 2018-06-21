@@ -57,6 +57,7 @@ public class GestureActionAdapter extends BaseAdapter {
         ViewHolder holder = (ViewHolder) convertView.getTag();
         holder.icon.setImageBitmap(GestureManager.get().getGestureThumbById(action.gestureId));
         holder.title.setText(action.name);
+        holder.subTitle.setText(action.description);
 
         return convertView;
     }
@@ -67,6 +68,8 @@ public class GestureActionAdapter extends BaseAdapter {
         ImageView icon;
         @BindView(R.id.gesture_title)
         TextView title;
+        @BindView(R.id.gesture_sub_title)
+        TextView subTitle;
         public ViewHolder(View itemView) {
             this.itemView = itemView;
             ButterKnife.bind(this, itemView);
