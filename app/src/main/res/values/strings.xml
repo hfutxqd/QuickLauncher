@@ -10,4 +10,6 @@
     <string name="choose_app">选择应用</string>
     <string name="create_gesture_here">请在此处绘制手势</string>
     <string name="action_delete">删除</string>
+    <string name="choose_func">选择功能</string>
+    <string name="action_func">快按键功能</string>
 </resources>

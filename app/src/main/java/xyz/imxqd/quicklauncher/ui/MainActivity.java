@@ -1,8 +1,11 @@
 package xyz.imxqd.quicklauncher.ui;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +14,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -22,6 +26,8 @@ import xyz.imxqd.quicklauncher.ui.adapters.GestureActionAdapter;
 import xyz.imxqd.quicklauncher.utils.DialogUtil;
 
 public class MainActivity extends BaseActivity {
+
+    private static final String TAG = "QuickLauncher";
 
     private static final int REQUSET_ADD = 2;
 

@@ -30,11 +30,14 @@ import butterknife.BindView;
 import xyz.imxqd.quicklauncher.R;
 import xyz.imxqd.quicklauncher.dao.GestureAction;
 import xyz.imxqd.quicklauncher.model.GestureManager;
+import xyz.imxqd.quicklauncher.utils.ClickUtil;
 
 
 public class AppChooseActivity extends BaseActivity {
 
     public static final String ARG_GESTURE = "arg_gesture";
+
+    private static final int REQUEST_CLICK_FUNC = 4;
 
     @BindView(R.id.app_list)
     ListView mAppList;
@@ -98,9 +101,15 @@ public class AppChooseActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.app_list, menu);
-        mDoneMenu = menu.getItem(0).setEnabled(false);
-        mDoneMenu.getIcon().setAlpha(80);
+        if (ClickUtil.isClickClickInstalled()) {
+            getMenuInflater().inflate(R.menu.app_list2, menu);
+            mDoneMenu = menu.getItem(1).setEnabled(false);
+            mDoneMenu.getIcon().setAlpha(80);
+        } else {
+            getMenuInflater().inflate(R.menu.app_list, menu);
+            mDoneMenu = menu.getItem(0).setEnabled(false);
+            mDoneMenu.getIcon().setAlpha(80);
+        }
         return true;
     }
 
@@ -110,10 +119,21 @@ public class AppChooseActivity extends BaseActivity {
             GestureManager.get().save(mGesture, mAdapter.getSelectedItem(), GestureAction.ACTION_TYPE_ACTIVITY_INTENT);
             setResult(RESULT_OK);
             finish();
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             return true;
+        } else if (item.getItemId() == R.id.action_func) {
+            Intent intent = new Intent(this, ClickFuncActivity.class);
+            intent.putExtra(ClickFuncActivity.ARG_GESTURE, mGesture);
+            startActivityForResult(intent, REQUEST_CLICK_FUNC);
         }
         return false;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CLICK_FUNC && resultCode == RESULT_OK) {
+            finish();
+        }
     }
 
     private void loadInfos() {
