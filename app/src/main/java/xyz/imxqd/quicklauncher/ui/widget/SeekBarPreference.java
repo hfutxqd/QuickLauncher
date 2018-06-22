@@ -117,7 +117,7 @@ public class SeekBarPreference extends Preference {
     }
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        if (attrs != null && defStyleAttr != -1 && defStyleRes != -1) {
+        if (attrs != null) {
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SeekBarPreference, defStyleAttr, defStyleRes);
             mSmooth = a.getBoolean(R.styleable.SeekBarPreference_smooth, true);
             mMin = a.getInt(R.styleable.SeekBarPreference_min, 0);
@@ -172,7 +172,7 @@ public class SeekBarPreference extends Preference {
         }
 
         if (mSeekBarText != null) {
-            mSeekBarText.setText(String.valueOf(mSeekBar.getProgress() + "%"));
+            mSeekBarText.setText(String.valueOf(mSeekBarValue + "%"));
         }
     }
 
@@ -262,7 +262,7 @@ public class SeekBarPreference extends Preference {
         if (seekBarValue != mSeekBarValue) {
             mSeekBarValue = seekBarValue;
             if (mSeekBarText != null) {
-                mSeekBarText.setText(String.valueOf(mSeekBar.getProgress() + "%"));
+                mSeekBarText.setText(String.valueOf(mSeekBarValue + "%"));
             }
             persistInt(seekBarValue);
             if (notifyChanged) {
@@ -274,6 +274,8 @@ public class SeekBarPreference extends Preference {
     public int getValue() {
         return mSeekBarValue;
     }
+
+
 
     /**
      * Persist the seekBar's seekbar value if callChangeListener

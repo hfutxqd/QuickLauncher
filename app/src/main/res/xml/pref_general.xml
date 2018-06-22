@@ -1,38 +1,72 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.kizitonwose.colorpreference.ColorPreference
-        android:title="@string/settings_gesture_bg_color"
-        android:defaultValue="@string/background_color_default"
-        app:colorShape="circle"
-        app:numColumns="5"
-        app:colorChoices="@array/background_color_choices"
-        app:showDialog="true"
-        android:key="@string/pref_key_background_color"/>
+    <PreferenceCategory
+        android:title="@string/settings_category_style">
+        <com.kizitonwose.colorpreference.ColorPreference
+            android:title="@string/settings_gesture_bg_color"
+            android:defaultValue="@string/background_color_default"
+            app:colorShape="circle"
+            app:numColumns="5"
+            app:colorChoices="@array/background_color_choices"
+            app:showDialog="true"
+            android:key="@string/pref_key_background_color"/>
 
-    <xyz.imxqd.quicklauncher.ui.widget.SeekBarPreference
-        android:title="@string/settings_alpha"
-        android:defaultValue="0"
-        app:max="100"
-        app:min="0"
-        app:adjustable="true"
-        android:key="@string/pref_key_background_alpha"/>
+        <xyz.imxqd.quicklauncher.ui.widget.SeekBarPreference
+            android:title="@string/settings_alpha"
+            android:defaultValue="0"
+            app:max="100"
+            app:min="0"
+            app:adjustable="true"
+            android:key="@string/pref_key_background_alpha"/>
 
-    <com.kizitonwose.colorpreference.ColorPreference
-        android:title="@string/settings_gesture_strike_color"
-        android:defaultValue="@string/strike_color_default"
-        app:colorShape="circle"
-        app:numColumns="5"
-        app:colorChoices="@array/strike_color_choices"
-        app:showDialog="true"
-        android:key="@string/pref_key_strike_color" />
+        <com.kizitonwose.colorpreference.ColorPreference
+            android:title="@string/settings_gesture_strike_color"
+            android:defaultValue="@string/strike_color_default"
+            app:colorShape="circle"
+            app:numColumns="5"
+            app:colorChoices="@array/strike_color_choices"
+            app:showDialog="true"
+            android:key="@string/pref_key_strike_color" />
 
-    <xyz.imxqd.quicklauncher.ui.widget.SeekBarPreference
-        android:title="@string/settings_alpha"
-        android:defaultValue="0"
-        app:max="100"
-        app:min="0"
-        app:adjustable="true"
-        android:key="@string/pref_key_strike_color_alpha"/>
+        <xyz.imxqd.quicklauncher.ui.widget.SeekBarPreference
+            android:title="@string/settings_alpha"
+            android:defaultValue="0"
+            app:max="100"
+            app:min="0"
+            app:adjustable="true"
+            android:key="@string/pref_key_strike_color_alpha"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/settings_category_quick_open">
+
+        <SwitchPreference
+            android:title="@string/settings_floating_notification_switch"
+            android:defaultValue="true"
+            android:key="@string/pref_key_floating_notification_switch"
+            android:summary="@string/settings_floating_notification_summary"/>
+
+        <SwitchPreference
+            android:title="@string/settings_floating_ball_switch"
+            android:defaultValue="false"
+            android:key="@string/pref_key_floating_ball_switch"
+            android:summary="@string/settings_floating_ball_summary"/>
+
+        <xyz.imxqd.quicklauncher.ui.widget.SeekBarPreference
+            android:title="@string/settings_floating_ball_size"
+            android:defaultValue="100"
+            app:max="100"
+            app:min="60"
+            app:adjustable="true"
+            android:key="@string/pref_key_floating_ball_size"/>
+
+        <Preference
+            android:title="@string/settings_shortcut"
+            android:key="@string/pref_key_shortcut"
+            android:summary="@string/settings_shortcut_summary"/>
+
+    </PreferenceCategory>
+
 
 </PreferenceScreen>

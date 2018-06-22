@@ -1,11 +1,27 @@
 <resources>
     <!-- Strings related to Settings -->
+    <string name="settings_category_style">识别板主题</string>
     <string name="settings_gesture_bg_color">手势识别背景色</string>
     <string name="settings_gesture_strike_color">手势识别轨迹色</string>
     <string name="settings_alpha">透明度</string>
+
+    <string name="settings_category_quick_open">快速打开</string>
+    <string name="settings_floating_ball_size">悬浮球大小</string>
+    <string name="settings_floating_ball_switch">悬浮球</string>
+    <string name="settings_floating_notification_switch">通知栏</string>
+
+    <string name="settings_floating_ball_summary">点击打开手势识别，长按打开主界面。需要悬浮窗权限</string>
+    <string name="settings_floating_notification_summary">从通知栏快速打开</string>
+
+    <string name="settings_shortcut">创建桌面快捷方式</string>
+    <string name="settings_shortcut_summary">通过桌面快捷方式快速打开手势识别</string>
 
     <string name="pref_key_background_color" translatable="false">background_color</string>
     <string name="pref_key_background_alpha" translatable="false">background_color_alpha</string>
     <string name="pref_key_strike_color" translatable="false">strike_color</string>
     <string name="pref_key_strike_color_alpha" translatable="false">strike_color_alpha</string>
+    <string name="pref_key_floating_ball_size" translatable="false">floating_ball_size</string>
+    <string name="pref_key_floating_ball_switch" translatable="false">floating_ball_switch</string>
+    <string name="pref_key_floating_notification_switch" translatable="false">floating_notification_switch</string>
+    <string name="pref_key_shortcut" translatable="false">shortcut</string>
 </resources>

@@ -18,5 +18,10 @@
     <string name="action_about">关于</string>
     <string name="title_activity_settings">设置</string>
     <string name="label_gesture">手势</string>
+    <string name="foreground_service_channel_name">前台服务</string>
+    <string name="foreground_service_description">用于快速打开应用</string>
+    <string name="action_main">设置</string>
+    <string name="action_gesture">手势识别</string>
+    <string name="notification_title_quick_open">快速打开</string>
 
 </resources>

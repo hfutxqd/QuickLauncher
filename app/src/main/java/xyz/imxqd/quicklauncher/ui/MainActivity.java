@@ -14,10 +14,12 @@ import butterknife.BindView;
 import xyz.imxqd.quicklauncher.R;
 import xyz.imxqd.quicklauncher.dao.GestureAction;
 import xyz.imxqd.quicklauncher.model.GestureManager;
-import xyz.imxqd.quicklauncher.service.OpenService;
+import xyz.imxqd.quicklauncher.service.FloatingService;
+import xyz.imxqd.quicklauncher.service.NotificationService;
 import xyz.imxqd.quicklauncher.ui.adapters.GestureActionAdapter;
 import xyz.imxqd.quicklauncher.ui.base.BaseActivity;
 import xyz.imxqd.quicklauncher.utils.DialogUtil;
+import xyz.imxqd.quicklauncher.utils.SettingsUtil;
 
 public class MainActivity extends BaseActivity {
 
@@ -68,7 +70,16 @@ public class MainActivity extends BaseActivity {
             });
         });
         load();
-        startService(new Intent(this, OpenService.class));
+        if (SettingsUtil.isFloatingBallOn()) {
+            Intent intent = new Intent(FloatingService.ACTION_SHOW);
+            intent.setClass(this, FloatingService.class);
+            startService(intent);
+        }
+        if (SettingsUtil.isNotificationOn()) {
+            Intent intent = new Intent(NotificationService.ACTION_SHOW);
+            intent.setClass(this, NotificationService.class);
+            startService(intent);
+        }
     }
 
     private void load() {
