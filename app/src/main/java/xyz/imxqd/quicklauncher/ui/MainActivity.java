@@ -20,6 +20,7 @@ import xyz.imxqd.quicklauncher.ui.adapters.GestureActionAdapter;
 import xyz.imxqd.quicklauncher.ui.base.BaseActivity;
 import xyz.imxqd.quicklauncher.utils.DialogUtil;
 import xyz.imxqd.quicklauncher.utils.SettingsUtil;
+import xyz.imxqd.quicklauncher.utils.ShortcutUtil;
 
 public class MainActivity extends BaseActivity {
 
@@ -80,6 +81,11 @@ public class MainActivity extends BaseActivity {
             intent.setClass(this, NotificationService.class);
             startService(intent);
         }
+        if (!SettingsUtil.getBoolean("shortcut_auto_create", false)) {
+            ShortcutUtil.create();
+            SettingsUtil.save("shortcut_auto_create", true);
+        }
+
     }
 
     private void load() {

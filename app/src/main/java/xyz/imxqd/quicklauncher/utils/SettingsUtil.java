@@ -65,9 +65,19 @@ public class SettingsUtil {
         shp.edit().putInt(key, value).apply();
     }
 
+    public static void save(String key, boolean value) {
+        SharedPreferences shp = PreferenceManager.getDefaultSharedPreferences(App.getApp());
+        shp.edit().putBoolean(key, value).apply();
+    }
+
     public static int getInt(String key, int defaultValue) {
         SharedPreferences shp = PreferenceManager.getDefaultSharedPreferences(App.getApp());
         return shp.getInt(key, defaultValue);
+    }
+
+    public static boolean getBoolean(String key, boolean defaultValue) {
+        SharedPreferences shp = PreferenceManager.getDefaultSharedPreferences(App.getApp());
+        return shp.getBoolean(key, defaultValue);
     }
 
     public static boolean canDrawOverlayViews(Context con){
