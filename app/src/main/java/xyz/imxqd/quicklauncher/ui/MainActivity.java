@@ -14,6 +14,7 @@ import butterknife.BindView;
 import xyz.imxqd.quicklauncher.R;
 import xyz.imxqd.quicklauncher.dao.GestureAction;
 import xyz.imxqd.quicklauncher.model.GestureManager;
+import xyz.imxqd.quicklauncher.service.OpenService;
 import xyz.imxqd.quicklauncher.ui.adapters.GestureActionAdapter;
 import xyz.imxqd.quicklauncher.ui.base.BaseActivity;
 import xyz.imxqd.quicklauncher.utils.DialogUtil;
@@ -67,6 +68,7 @@ public class MainActivity extends BaseActivity {
             });
         });
         load();
+        startService(new Intent(this, OpenService.class));
     }
 
     private void load() {

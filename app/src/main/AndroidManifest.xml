@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="xyz.imxqd.quicklauncher">
 
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW"/>
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -38,6 +41,8 @@
         <activity
             android:name=".ui.SettingsActivity"
             android:label="@string/title_activity_settings" />
+
+        <service android:name=".service.OpenService" />
     </application>
 
 </manifest>
