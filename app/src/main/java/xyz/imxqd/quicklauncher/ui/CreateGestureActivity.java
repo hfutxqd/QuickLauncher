@@ -2,25 +2,16 @@ package xyz.imxqd.quicklauncher.ui;
 
 import android.content.Intent;
 import android.gesture.Gesture;
-import android.gesture.GestureLibraries;
-import android.gesture.GestureLibrary;
 import android.gesture.GestureOverlayView;
-import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
-import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.io.File;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 import xyz.imxqd.quicklauncher.R;
-import xyz.imxqd.quicklauncher.model.GestureManager;
+import xyz.imxqd.quicklauncher.ui.base.BaseActivity;
 
 public class CreateGestureActivity extends BaseActivity {
     private static final float LENGTH_THRESHOLD = 120.0f;

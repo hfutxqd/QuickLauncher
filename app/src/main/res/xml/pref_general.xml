@@ -3,22 +3,36 @@
 
     <com.kizitonwose.colorpreference.ColorPreference
         android:title="@string/settings_gesture_bg_color"
-        android:defaultValue="#FFFFFF"
+        android:defaultValue="@string/background_color_default"
         app:colorShape="circle"
         app:numColumns="5"
-        app:showDialog="true"/>
+        app:colorChoices="@array/background_color_choices"
+        app:showDialog="true"
+        android:key="@string/pref_key_background_color"/>
 
     <xyz.imxqd.quicklauncher.ui.widget.SeekBarPreference
-        android:title="测试测试"
+        android:title="@string/settings_alpha"
         android:defaultValue="0"
         app:max="100"
         app:min="0"
         app:adjustable="true"
-        android:key="test2"/>
+        android:key="@string/pref_key_background_alpha"/>
 
     <com.kizitonwose.colorpreference.ColorPreference
         android:title="@string/settings_gesture_strike_color"
-        android:defaultValue="#555555"
-        android:key="test" />
+        android:defaultValue="@string/strike_color_default"
+        app:colorShape="circle"
+        app:numColumns="5"
+        app:colorChoices="@array/strike_color_choices"
+        app:showDialog="true"
+        android:key="@string/pref_key_strike_color" />
+
+    <xyz.imxqd.quicklauncher.ui.widget.SeekBarPreference
+        android:title="@string/settings_alpha"
+        android:defaultValue="0"
+        app:max="100"
+        app:min="0"
+        app:adjustable="true"
+        android:key="@string/pref_key_strike_color_alpha"/>
 
 </PreferenceScreen>

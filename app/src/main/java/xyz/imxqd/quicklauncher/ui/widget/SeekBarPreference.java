@@ -13,17 +13,22 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 import xyz.imxqd.quicklauncher.R;
 
 
 public class SeekBarPreference extends Preference {
+    private SeekBar mSeekBar;
+    private TextView mTitle;
+    private TextView mSeekBarText;
+
+
     private int mSeekBarValue;
     private int mMin;
     private int mMax;
     private int mSeekBarIncrement;
     private boolean mSmooth;
-    private SeekBar mSeekBar;
     private boolean mAdjustable; // whether the seekbar should respond to the left/right keys
 
     private static final String TAG = "SeekBarPreference";
@@ -144,6 +149,8 @@ public class SeekBarPreference extends Preference {
 
         view.setOnKeyListener(mSeekBarKeyListener);
         mSeekBar = view.findViewById(R.id.seekbar);
+        mTitle = view.findViewById(R.id.title);
+        mSeekBarText = view.findViewById(R.id.seekbar_text);
 
         if (mSeekBar == null) {
             Log.e(TAG, "SeekBar view is null in onBindViewHolder.");
@@ -159,6 +166,14 @@ public class SeekBarPreference extends Preference {
 
         mSeekBar.setProgress(mSeekBarValue - mMin);
         mSeekBar.setEnabled(isEnabled());
+
+        if (mTitle != null) {
+            mTitle.setText(getTitle());
+        }
+
+        if (mSeekBarText != null) {
+            mSeekBarText.setText(String.valueOf(mSeekBar.getProgress() + "%"));
+        }
     }
 
     @Override
@@ -246,6 +261,9 @@ public class SeekBarPreference extends Preference {
 
         if (seekBarValue != mSeekBarValue) {
             mSeekBarValue = seekBarValue;
+            if (mSeekBarText != null) {
+                mSeekBarText.setText(String.valueOf(mSeekBar.getProgress() + "%"));
+            }
             persistInt(seekBarValue);
             if (notifyChanged) {
                 notifyChanged();

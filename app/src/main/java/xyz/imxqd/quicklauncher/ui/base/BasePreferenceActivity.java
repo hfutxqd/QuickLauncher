@@ -1,4 +1,4 @@
-package xyz.imxqd.quicklauncher.ui;
+package xyz.imxqd.quicklauncher.ui.base;
 
 import android.content.Context;
 import android.content.res.Configuration;

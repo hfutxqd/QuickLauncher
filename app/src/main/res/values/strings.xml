@@ -11,37 +11,11 @@
     <string name="create_gesture_here">请在此处绘制手势\n请务必一笔绘制完成</string>
     <string name="action_delete">删除</string>
     <string name="choose_func">选择功能</string>
-    <string name="action_func">快按键功能</string>
+    <string name="action_func">易按键功能</string>
     <string name="lanucher_app_prefix">打开</string>
     <string name="create_gesture_here2">请点击下一步</string>
     <string name="action_settings">设置</string>
     <string name="action_about">关于</string>
-    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_settings">设置</string>
 
-    <!-- Strings related to Settings -->
-
-    <!-- Example General settings -->
-    <string name="pref_header_general">设置</string>
-
-    <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact
-        based on your message history
-    </string>
-
-    <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
-
-    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
-    <string name="settings_gesture_bg_color">手势识别背景色</string>
-    <string name="settings_gesture_strike_color">手势识别线色</string>
-    <string-array name="pref_example_list_titles">
-        <item>Always</item>
-        <item>When possible</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_example_list_values">
-        <item>1</item>
-        <item>0</item>
-        <item>-1</item>
-    </string-array>
 </resources>

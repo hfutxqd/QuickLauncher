@@ -1,28 +1,21 @@
 package xyz.imxqd.quicklauncher.ui;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
-import io.reactivex.functions.Consumer;
 import xyz.imxqd.quicklauncher.R;
 import xyz.imxqd.quicklauncher.dao.GestureAction;
 import xyz.imxqd.quicklauncher.model.GestureManager;
 import xyz.imxqd.quicklauncher.ui.adapters.GestureActionAdapter;
+import xyz.imxqd.quicklauncher.ui.base.BaseActivity;
 import xyz.imxqd.quicklauncher.utils.DialogUtil;
 
 public class MainActivity extends BaseActivity {

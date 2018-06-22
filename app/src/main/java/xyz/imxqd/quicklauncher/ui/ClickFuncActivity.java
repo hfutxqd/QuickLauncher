@@ -6,8 +6,6 @@ import android.gesture.Gesture;
 import android.net.Uri;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -15,6 +13,7 @@ import butterknife.BindView;
 import xyz.imxqd.quicklauncher.R;
 import xyz.imxqd.quicklauncher.model.GestureManager;
 import xyz.imxqd.quicklauncher.ui.adapters.FuncAdapter;
+import xyz.imxqd.quicklauncher.ui.base.BaseActivity;
 import xyz.imxqd.quicklauncher.utils.ClickUtil;
 
 public class ClickFuncActivity extends BaseActivity {

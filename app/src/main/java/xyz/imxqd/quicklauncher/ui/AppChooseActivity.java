@@ -30,6 +30,7 @@ import butterknife.BindView;
 import xyz.imxqd.quicklauncher.R;
 import xyz.imxqd.quicklauncher.dao.GestureAction;
 import xyz.imxqd.quicklauncher.model.GestureManager;
+import xyz.imxqd.quicklauncher.ui.base.BaseActivity;
 import xyz.imxqd.quicklauncher.utils.ClickUtil;
 
 

@@ -1,4 +1,4 @@
-package xyz.imxqd.quicklauncher.ui;
+package xyz.imxqd.quicklauncher.ui.base;
 
 import android.os.Bundle;
 import android.support.annotation.IdRes;
