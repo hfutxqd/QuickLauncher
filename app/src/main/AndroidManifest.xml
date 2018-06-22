@@ -24,6 +24,7 @@
             android:label="@string/choose_app" />
         <activity
             android:name=".ui.GestureDetectActivity"
+            android:label="@string/label_gesture"
             android:theme="@style/AppTheme.NoTitleDialog">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

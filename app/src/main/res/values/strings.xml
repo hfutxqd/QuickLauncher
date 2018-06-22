@@ -17,5 +17,6 @@
     <string name="action_settings">设置</string>
     <string name="action_about">关于</string>
     <string name="title_activity_settings">设置</string>
+    <string name="label_gesture">手势</string>
 
 </resources>
