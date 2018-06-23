@@ -5,8 +5,8 @@ import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.PixelFormat;
-import android.os.Binder;
 import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
@@ -79,6 +79,16 @@ public class FloatingService extends Service {
     boolean isPressed = false;
 
     float mBallSize = 1f;
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            show(true);
+        } else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            hide();
+        }
+        super.onConfigurationChanged(newConfig);
+    }
 
     @SuppressLint("ClickableViewAccessibility")
     private void createFloatView() {
@@ -164,7 +174,6 @@ public class FloatingService extends Service {
         } else {
             wmParams.type = WindowManager.LayoutParams.TYPE_PHONE;
         }
-
         wmParams.format = PixelFormat.RGBA_8888;
         wmParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
         wmParams.gravity = Gravity.START | Gravity.TOP;
@@ -254,6 +263,7 @@ public class FloatingService extends Service {
         if (mFloatView == null) {
             return;
         }
+        mHandler.removeCallbacksAndMessages(null);
         mViewState = ViewState.Hide;
         mFloatView.setVisibility(View.VISIBLE);
         mFloatView.animate().scaleX(0f).scaleY(0f).setDuration(200).alpha(0f).setListener(new Animator.AnimatorListener() {

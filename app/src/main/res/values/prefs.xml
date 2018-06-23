@@ -10,7 +10,7 @@
     <string name="settings_floating_ball_switch">悬浮球</string>
     <string name="settings_floating_notification_switch">通知栏</string>
 
-    <string name="settings_floating_ball_summary">点击打开手势识别，长按打开主界面。需要悬浮窗权限</string>
+    <string name="settings_floating_ball_summary">点击打开手势识别，长按打开主界面，横屏自动隐藏。需要悬浮窗权限</string>
     <string name="settings_floating_notification_summary">从通知栏快速打开</string>
 
     <string name="settings_shortcut">创建桌面快捷方式</string>
