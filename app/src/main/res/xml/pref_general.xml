@@ -66,6 +66,11 @@
             android:key="@string/pref_key_shortcut"
             android:summary="@string/settings_shortcut_summary"/>
 
+        <Preference
+            android:title="@string/settings_open_by_click_click"
+            android:key="@string/pref_key_open_by_click_click"
+            android:summary="@string/settings_open_by_click_click_summary" />
+
     </PreferenceCategory>
 
 

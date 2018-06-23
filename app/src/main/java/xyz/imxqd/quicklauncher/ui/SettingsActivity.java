@@ -1,7 +1,9 @@
 package xyz.imxqd.quicklauncher.ui;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.preference.SwitchPreference;
 import android.widget.Toast;
 
@@ -11,6 +13,7 @@ import xyz.imxqd.quicklauncher.service.NotificationService;
 import xyz.imxqd.quicklauncher.ui.base.BaseActivity;
 import xyz.imxqd.quicklauncher.ui.base.BasePreferenceFragment;
 import xyz.imxqd.quicklauncher.ui.widget.SeekBarPreference;
+import xyz.imxqd.quicklauncher.utils.ClickUtil;
 import xyz.imxqd.quicklauncher.utils.SettingsUtil;
 import xyz.imxqd.quicklauncher.utils.ShortcutUtil;
 
@@ -54,6 +57,20 @@ public class SettingsActivity extends BaseActivity {
                 ShortcutUtil.create();
                 Toast.makeText(getActivity(), R.string.shortcut_created, Toast.LENGTH_LONG).show();
                 return true;
+            });
+
+            findPreference(getString(R.string.pref_key_open_by_click_click)).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    if (ClickUtil.isClickClickInstalled()) {
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setData(Uri.parse(getString(R.string.url_add_to_click_click)));
+                        startActivity(intent);
+                    } else {
+                        ClickUtil.launchMarket();
+                    }
+                    return true;
+                }
             });
 
             mPreFloatingBallSize.setOnPreferenceChangeListener((preference, newValue) -> {

@@ -16,6 +16,11 @@
     <string name="settings_shortcut">创建桌面快捷方式</string>
     <string name="settings_shortcut_summary">通过桌面快捷方式快速打开手势识别</string>
 
+    <string name="settings_open_by_click_click">通过易按键快速打开</string>
+    <string name="settings_open_by_click_click_summary">添加到易按键功能列表中，通过易按键快速打开</string>
+
+    <string name="url_add_to_click_click" translatable="false">clickclick://add/%7b%27name%27%3a%27%e5%90%af%e5%8a%a8%e6%89%8b%e5%8a%bf%e8%af%86%e5%88%ab%27%2c%27description%27%3a%27%e5%90%af%e5%8a%a8%e6%89%8b%e5%8a%bf%e8%af%86%e5%88%ab%27%2c%27body%27%3a%27action%3aintent%3a%2f%2f%23Intent%3bcomponent%3dxyz.imxqd.quicklauncher%2f.ui.GestureDetectActivity%3bend%27%7d</string>
+
     <string name="pref_key_background_color" translatable="false">background_color</string>
     <string name="pref_key_background_alpha" translatable="false">background_color_alpha</string>
     <string name="pref_key_strike_color" translatable="false">strike_color</string>
@@ -24,4 +29,5 @@
     <string name="pref_key_floating_ball_switch" translatable="false">floating_ball_switch</string>
     <string name="pref_key_floating_notification_switch" translatable="false">floating_notification_switch</string>
     <string name="pref_key_shortcut" translatable="false">shortcut</string>
+    <string name="pref_key_open_by_click_click" translatable="false">open_by_click_click</string>
 </resources>

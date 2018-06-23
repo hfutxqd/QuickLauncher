@@ -1,9 +1,12 @@
 package xyz.imxqd.quicklauncher.utils;
 
+import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.widget.Toast;
 
 import xyz.imxqd.quicklauncher.App;
 import xyz.imxqd.quicklauncher.R;
@@ -50,6 +53,17 @@ public class ClickUtil {
             return pm.getApplicationInfo(sInstalledClickClick, PackageManager.GET_META_DATA).loadIcon(pm);
         } catch (PackageManager.NameNotFoundException e) {
             return App.getApp().getResources().getDrawable(R.mipmap.ic_launcher);
+        }
+    }
+
+    public static void launchMarket() {
+        Uri uri = Uri.parse("market://details?id=xyz.imxqd.clickclick");
+        Intent myAppLinkToMarket = new Intent(Intent.ACTION_VIEW, uri);
+        myAppLinkToMarket.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        try {
+            App.getApp().startActivity(myAppLinkToMarket);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(App.getApp(), " unable to find market app", Toast.LENGTH_LONG).show();
         }
     }
 }
