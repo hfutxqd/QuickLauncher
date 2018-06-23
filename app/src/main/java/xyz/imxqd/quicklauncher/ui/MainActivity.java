@@ -1,9 +1,11 @@
 package xyz.imxqd.quicklauncher.ui;
 
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -112,6 +114,16 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.action_settings:
                 startActivity(new Intent(this, SettingsActivity.class));
+                break;
+
+            case R.id.action_about:
+                WebView webView = new WebView(this);
+                webView.loadUrl("file:///android_asset/copyright.html");
+                new AlertDialog.Builder(this)
+                        .setTitle(R.string.title_about)
+                        .setView(webView)
+                        .setPositiveButton(R.string.ok, null)
+                        .show();
                 break;
         }
         return true;

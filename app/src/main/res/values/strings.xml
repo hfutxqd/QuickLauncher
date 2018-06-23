@@ -24,5 +24,7 @@
     <string name="action_gesture">手势识别</string>
     <string name="notification_title_quick_open">快速打开</string>
     <string name="shortcut_created">快捷方式已创建</string>
+    <string name="title_about">关于本软件</string>
+    <string name="ok">好哒</string>
 
 </resources>
