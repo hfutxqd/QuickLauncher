@@ -23,5 +23,6 @@
     <string name="action_main">设置</string>
     <string name="action_gesture">手势识别</string>
     <string name="notification_title_quick_open">快速打开</string>
+    <string name="shortcut_created">快捷方式已创建</string>
 
 </resources>

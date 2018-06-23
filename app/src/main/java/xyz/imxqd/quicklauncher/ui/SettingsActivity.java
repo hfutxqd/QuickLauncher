@@ -2,8 +2,8 @@ package xyz.imxqd.quicklauncher.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.Preference;
 import android.preference.SwitchPreference;
+import android.widget.Toast;
 
 import xyz.imxqd.quicklauncher.R;
 import xyz.imxqd.quicklauncher.service.FloatingService;
@@ -50,12 +50,10 @@ public class SettingsActivity extends BaseActivity {
             mPreFloatingSwitch = (SwitchPreference) findPreference(getString(R.string.pref_key_floating_ball_switch));
             mPreNotificationSwitch = (SwitchPreference) findPreference(getString(R.string.pref_key_floating_notification_switch));
 
-            findPreference(getString(R.string.pref_key_shortcut)).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    ShortcutUtil.create();
-                    return true;
-                }
+            findPreference(getString(R.string.pref_key_shortcut)).setOnPreferenceClickListener(preference -> {
+                ShortcutUtil.create();
+                Toast.makeText(getActivity(), R.string.shortcut_created, Toast.LENGTH_LONG).show();
+                return true;
             });
 
             mPreFloatingBallSize.setOnPreferenceChangeListener((preference, newValue) -> {
