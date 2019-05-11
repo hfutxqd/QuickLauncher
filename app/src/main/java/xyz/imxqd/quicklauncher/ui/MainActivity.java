@@ -63,12 +63,10 @@ public class MainActivity extends BaseActivity {
             List<String> list = new ArrayList<>();
             list.add(getString(R.string.action_delete));
             DialogUtil.showList(MainActivity.this, list, (pos, item) -> {
-                switch (pos) {
-                    case 0:
-                        GestureAction action = (GestureAction) mAdapter.getItem(position);
-                        GestureManager.get().delete(action.gestureId);
-                        load();
-                        break;
+                if (pos == 0) {
+                    GestureAction action = (GestureAction) mAdapter.getItem(position);
+                    GestureManager.get().delete(action.gestureId);
+                    load();
                 }
             });
         });

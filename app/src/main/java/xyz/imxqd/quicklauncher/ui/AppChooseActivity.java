@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -57,6 +58,7 @@ public class AppChooseActivity extends BaseActivity {
         }
     };
     List<AppInfo> mAppInfoList = new ArrayList<>();
+    List<AppInfo> displayedPackages = new ArrayList<>();
     AppListAdapter mAdapter = new AppListAdapter();
 
     MenuItem mDoneMenu;
@@ -102,15 +104,28 @@ public class AppChooseActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (ClickUtil.isClickClickInstalled()) {
-            getMenuInflater().inflate(R.menu.app_list2, menu);
-            mDoneMenu = menu.getItem(1).setEnabled(false);
-            mDoneMenu.getIcon().setAlpha(80);
-        } else {
-            getMenuInflater().inflate(R.menu.app_list, menu);
-            mDoneMenu = menu.getItem(0).setEnabled(false);
-            mDoneMenu.getIcon().setAlpha(80);
-        }
+        getMenuInflater().inflate(R.menu.app_list2, menu);
+        mDoneMenu = menu.findItem(R.id.action_done);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                displayedPackages.clear();
+                for (AppInfo appInfo : mAppInfoList) {
+                    if (appInfo.name.contains(s)) {
+                        displayedPackages.add(appInfo);
+                    }
+                }
+                mAdapter.notifyDataSetChanged();
+                return false;
+            }
+        });
         return true;
     }
 
@@ -158,6 +173,8 @@ public class AppChooseActivity extends BaseActivity {
             Comparator<AppInfo> cmp = (o1, o2) -> Collator.getInstance(Locale.getDefault()).compare(o1.name, o2.name);
             Collections.sort(infos, cmp);
             mAppInfoList = infos;
+            displayedPackages.clear();
+            displayedPackages.addAll(mAppInfoList);
             mHandler.sendEmptyMessage(0);
 
         }).start();
@@ -177,12 +194,12 @@ public class AppChooseActivity extends BaseActivity {
 
         @Override
         public int getCount() {
-            return mAppInfoList.size();
+            return displayedPackages.size();
         }
 
         @Override
         public Object getItem(int position) {
-            return mAppInfoList.get(position);
+            return displayedPackages.get(position);
         }
 
         @Override
@@ -197,7 +214,7 @@ public class AppChooseActivity extends BaseActivity {
                 convertView.setTag(new AppViewHolder(convertView));
             }
             AppViewHolder holder = (AppViewHolder) convertView.getTag();
-            AppInfo info = mAppInfoList.get(position);
+            AppInfo info = displayedPackages.get(position);
             holder.name.setText(info.name);
             holder.packageName.setText(info.packageName);
             holder.icon.setImageDrawable(info.icon);
@@ -207,10 +224,10 @@ public class AppChooseActivity extends BaseActivity {
         }
 
         public void select(int pos) {
-            for (AppInfo info : mAppInfoList) {
+            for (AppInfo info : displayedPackages) {
                 info.isSelected = false;
             }
-            mSelectedItem = mAppInfoList.get(pos);
+            mSelectedItem = displayedPackages.get(pos);
             mSelectedItem.isSelected = true;
 
         }

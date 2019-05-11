@@ -3,6 +3,7 @@ package xyz.imxqd.quicklauncher.ui;
 import android.content.Intent;
 import android.gesture.Gesture;
 import android.gesture.GestureOverlayView;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,6 +30,15 @@ public class CreateGestureActivity extends BaseActivity {
     @Override
     protected int getLayoutResId() {
         return R.layout.activity_create_gesture;
+    }
+
+    @Override
+    protected void initViews() {
+        super.initViews();
+        mOverlayView.setGestureVisible(true);
+        mOverlayView.setEventsInterceptionEnabled(true);
+        mOverlayView.setGestureColor(Color.TRANSPARENT);
+        mOverlayView.setUncertainGestureColor(Color.TRANSPARENT);
     }
 
     @Override

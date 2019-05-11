@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">QuickLauncher</string>
+    <string name="app_name">一笔启动</string>
     <string name="action_add">新增</string>
     <string name="gestures_add">添加</string>
     <string name="gestures_cancel">取消</string>
-    <string name="no_data">暂无数据</string>
+    <string name="no_data">暂无手势</string>
     <string name="action_next">下一步</string>
     <string name="action_done">完成</string>
     <string name="create_gesture">创建手势</string>
@@ -26,5 +26,9 @@
     <string name="shortcut_created">快捷方式已创建</string>
     <string name="title_about">关于本软件</string>
     <string name="ok">好哒</string>
+    <string name="go_to_intall">去安装</string>
+    <string name="require_click_click">此功能需要安装易按键才能使用。要去下载体检么？</string>
+    <string name="no_defined_functions">没有已保存的易按键功能</string>
+    <string name="action_search">搜索</string>
 
 </resources>

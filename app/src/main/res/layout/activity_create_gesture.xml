@@ -10,6 +10,7 @@
         android:id="@+id/gestures_overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gestureColor="#000000"
         android:gestureStrokeType="multiple" />
 
     <TextView
