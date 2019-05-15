@@ -30,5 +30,11 @@
     <string name="require_click_click">此功能需要安装易按键才能使用。要去下载体检么？</string>
     <string name="no_defined_functions">没有已保存的易按键功能</string>
     <string name="action_search">搜索</string>
+    <string name="choose_a_market">选择一个应用市场</string>
+    <string name="no_market_installed">没有可用的应用市场</string>
+    <string name="cancel">不了</string>
+    <string name="require_open_click">安装易按键后需要至少打开一次</string>
+    <string name="go_to_open">打开</string>
+    <string name="action_rate">好评</string>
 
 </resources>

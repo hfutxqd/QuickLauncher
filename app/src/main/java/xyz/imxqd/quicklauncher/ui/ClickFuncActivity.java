@@ -11,14 +11,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import butterknife.BindView;
 import xyz.imxqd.quicklauncher.R;
 import xyz.imxqd.quicklauncher.model.GestureManager;
 import xyz.imxqd.quicklauncher.ui.adapters.FuncAdapter;
 import xyz.imxqd.quicklauncher.ui.base.BaseActivity;
+import xyz.imxqd.quicklauncher.utils.MarketUtil;
 import xyz.imxqd.quicklauncher.utils.ClickUtil;
+import xyz.imxqd.quicklauncher.utils.PackageUtil;
 
 public class ClickFuncActivity extends BaseActivity {
     public static final String ARG_GESTURE = "arg_gesture";
@@ -50,26 +51,55 @@ public class ClickFuncActivity extends BaseActivity {
         }
         Cursor cursor = getContentResolver().query(Uri.parse("content://click_func/"), null, null, null, null);
         if (cursor == null) {
-            new AlertDialog.Builder(this)
-                    .setMessage(R.string.require_click_click)
-                    .setOnDismissListener(new DialogInterface.OnDismissListener() {
-                        @Override
-                        public void onDismiss(DialogInterface dialog) {
-                            finish();
-                        }
-                    })
-                    .setNeutralButton(R.string.go_to_intall, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
+            if (PackageUtil.isPackageInstalled(getPackageManager(), "xyz.imxqd.clickclick")
+                    || PackageUtil.isPackageInstalled(getPackageManager(), "xyz.imxqd.clickclick.xposed")) {
+                new AlertDialog.Builder(this)
+                        .setMessage(R.string.require_open_click)
+                        .setOnDismissListener(new DialogInterface.OnDismissListener() {
+                            @Override
+                            public void onDismiss(DialogInterface dialog) {
+                                finish();
+                            }
+                        })
+                        .setPositiveButton(R.string.go_to_open, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if (PackageUtil.isPackageInstalled(getPackageManager(), "xyz.imxqd.clickclick")) {
+                                    startActivity(getPackageManager().getLaunchIntentForPackage("xyz.imxqd.clickclick"));
+                                } else if (PackageUtil.isPackageInstalled(getPackageManager(), "xyz.imxqd.clickclick.xposed")) {
+                                    startActivity(getPackageManager().getLaunchIntentForPackage("xyz.imxqd.clickclick.xposed"));
+                                }
+                            }
+                        })
+                        .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+                            }
+                        }).show();
+            } else {
+                new AlertDialog.Builder(this)
+                        .setMessage(R.string.require_click_click)
+                        .setOnDismissListener(new DialogInterface.OnDismissListener() {
+                            @Override
+                            public void onDismiss(DialogInterface dialog) {
+                                finish();
+                            }
+                        })
+                        .setPositiveButton(R.string.go_to_intall, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                MarketUtil.openMarket(ClickFuncActivity.this, "xyz.imxqd.clickclick");
+                            }
+                        })
+                        .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+                            }
+                        }).show();
+            }
 
-                        }
-                    })
-                    .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            finish();
-                        }
-                    }).show();
             return;
         }
         mAdapter = new FuncAdapter(this, cursor);

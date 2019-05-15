@@ -20,6 +20,7 @@ import xyz.imxqd.quicklauncher.service.FloatingService;
 import xyz.imxqd.quicklauncher.service.NotificationService;
 import xyz.imxqd.quicklauncher.ui.adapters.GestureActionAdapter;
 import xyz.imxqd.quicklauncher.ui.base.BaseActivity;
+import xyz.imxqd.quicklauncher.utils.MarketUtil;
 import xyz.imxqd.quicklauncher.utils.DialogUtil;
 import xyz.imxqd.quicklauncher.utils.SettingsUtil;
 import xyz.imxqd.quicklauncher.utils.ShortcutUtil;
@@ -113,7 +114,9 @@ public class MainActivity extends BaseActivity {
             case R.id.action_settings:
                 startActivity(new Intent(this, SettingsActivity.class));
                 break;
-
+            case R.id.action_rate:
+                MarketUtil.openRate(this, getPackageName());
+                break;
             case R.id.action_about:
                 WebView webView = new WebView(this);
                 webView.loadUrl("file:///android_asset/copyright.html");

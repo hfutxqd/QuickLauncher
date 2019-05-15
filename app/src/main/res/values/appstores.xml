@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="supported_appstroe">
+        <item>com.coolapk.market</item>
+        <item>com.android.vending</item>
+        <item>com.huawei.appmarket</item>
+    </string-array>
+</resources>
